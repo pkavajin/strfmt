@@ -1,4 +1,5 @@
 // Copyright 2015 go-swagger maintainers
+// Modifications copyright (C) 2019 Nect GmbH
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -55,6 +56,8 @@ const (
 	RFC3339Millis = "2006-01-02T15:04:05.000Z07:00"
 	// RFC3339Micro represents a ISO8601 format to micro instead of to nano
 	RFC3339Micro = "2006-01-02T15:04:05.000000Z07:00"
+	// RFC3339NoColon represents an RFC3339 format without the optional colon
+	RFC3339NoColon = "2006-01-02T15:04:05Z0700"
 	// ISO8601LocalTime represents a ISO8601 format to ISO8601 in local time (no timezone)
 	ISO8601LocalTime = "2006-01-02T15:04:05"
 	// DateTimePattern pattern to match for the date-time format from http://tools.ietf.org/html/rfc3339#section-5.6
@@ -62,7 +65,7 @@ const (
 )
 
 var (
-	dateTimeFormats = []string{RFC3339Micro, RFC3339Millis, time.RFC3339, time.RFC3339Nano, ISO8601LocalTime}
+	dateTimeFormats = []string{RFC3339Micro, RFC3339Millis, time.RFC3339, time.RFC3339Nano, ISO8601LocalTime, RFC3339NoColon}
 	rxDateTime      = regexp.MustCompile(DateTimePattern)
 	// MarshalFormat sets the time resolution format used for marshaling time (set to milliseconds)
 	MarshalFormat = RFC3339Millis
